@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+<title>VIAA Services Status</title>
+<meta name="author" content="Bart Debunne">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<link rel="stylesheet" href="css/furtive.min.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/jquery.timeago.js" type="text/javascript"></script>
+<script src="js/spin.min.js"></script>
+<script src="js/app.js"></script>
+
+</head>
+<body>
+    <div style="position:absolute;top:2em;right:2em;">
+        <code><span class="fnt--mid-gray" style="font-size:0.75em">laatste refresh <span class="timeago" id="refresh_date"></span></span> <a href="#" id="refresh" class="btn btn--s" title="Refresh">Refresh</a></code>
+    </div>
+    <div style="position:absolute;top:2em;left:2em;">
+        <code><a href="http://viaa.be" class="btn btn--s" title="VIAA website" id="viaa">VIAA</a></code>
+    </div>
+    <div class="measure py2">
+        <div class="txt--center">
+            <h1 class="h2">
+                Status VIAA Services
+                <!--<br />
+                <small class="small muted">subtitel</small>-->
+            </h1>
+            
+
+        </div>
+    </div>
+    <div class="measure py1">
+        <section class="measure px2 py1 brdr--light-gray bg--off-white" id="flash-msg">
+        </section> 
+    
+        <div id="loading"></div>
+        
+        <section class="p0 my2 grd" id="status-rows">
+        </section>
+        
+    </div>
+</body>

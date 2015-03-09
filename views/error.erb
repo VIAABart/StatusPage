@@ -1,0 +1,18 @@
+            <div class="grd-row my1 brdr--light-gray collapse" >
+
+              <div class="grd-row-col-5-6 p1">
+                <code >Monitoring unavailable</code>
+                <p class="collapsed"><%= session[:error_message] %></p>
+              </div>
+              <div class="grd-row-col-1-6 p1 bg--red txt--center">
+                  <code class="fnt--white">Error</code>
+              </div>
+            </div>
+            
+            <script>
+            $(document).ready(function() {
+                $(".collapse").click(function() {
+                    $(this).find("p").slideToggle(500);
+                });
+            });
+            </script>

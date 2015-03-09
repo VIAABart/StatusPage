@@ -1,0 +1,25 @@
+
+        <% @json.each do |sensor| %>
+            <div class="grd-row my1 brdr--light-gray collapse" >
+
+              <div class="grd-row-col-5-6 p1">
+                <code ><a href="<%= sensor[:uri] %>"><%= sensor[:device] %></a></code>
+                <p class="collapsed"><%= sensor[:status][:body] %></p>
+              </div>
+              <div class="grd-row-col-1-6 p1 bg--<%= sensor[:status][:code] == "OK" ? 'green' : 'red' %> txt--center">
+                  <code class="fnt--white"><%= sensor[:status][:code] %></code>
+              </div>
+            </div>
+        <% end %>  
+        
+        <script>
+        $(document).ready(function() {
+            $(".collapse").click(function() {
+                //$toggle = $(this);
+                //$content = $toggle.next("p");
+                $(this).find("p").slideToggle(500);
+            });
+        });
+        </script>
+
+        
