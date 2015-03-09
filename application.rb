@@ -30,12 +30,6 @@ module Status
     get '/status-rows' do
       erb :stats
     end
-    
-    get '/stats.json' do
-      content_type :json
-      @json = open("https://do-mgm-mon-01.do.viaa.be/api/table.json?id=16661&username=bdebunne&passhash=697070629&show=textraw&columns=columns=objid,downtimetime,device,sensor,lastvalue,status,message,priority,minigraph,checkbox", :ssl_verify_mode => nil ,'Accept-Encoding' => 'gzip').read
-      erb :json
-    end
       
     get '/stats' do
       @json = Array.new
