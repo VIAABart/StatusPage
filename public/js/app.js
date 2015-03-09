@@ -19,11 +19,11 @@ function update_status_rows() {
     LoadSpinner();
     $('#status-rows').fadeOut(100);
     $('#loading').fadeIn(100);
-    $.get("http://localhost:9292/motd", function(data) {
+    $.get("/motd", function(data) {
         $('#flash-msg').html(data).fadeIn(1000);
         },
         'html')
-    $.get("http://localhost:9292/stats", function(data,status) {
+    $.get("/stats", function(data,status) {
         $('#status-rows').html(data).fadeIn(1000);
         },
         'html')
