@@ -36,12 +36,11 @@ module Status
       requests = YAML.load_file("sites.yml").map(&:symbolize_keys)
       requests.each do |r|
         begin
-          response = open(r[:uri], :allow_redirections => :safe).status
+          response = open(r[:uri], :allow_redirections => :safe, :read_timeout => 5).status
           @json << {:device => r[:device], :uri => r[:uri], :status => {:code => response[1], :body => response[0]}}
         rescue => e
           session[:e] = e
           @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "Fout", :body => e}}
-          print e.inspect
         end
       end
       erb :stats
@@ -53,7 +52,6 @@ module Status
     
     get '/motd' do
       @motd = YAML.load_file("motd.yml")
-      print @motd.inspect
       erb :motd
     end
     
@@ -61,11 +59,6 @@ module Status
       status 500
       erb :error
     end
-    
-    not_found do
-      content_type :json
-      halt 404, { error: 'URL not found' }.to_json
-    end   
     
     error Sinatra::NotFound do
       content_type 'text/plain'
