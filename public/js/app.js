@@ -1,5 +1,9 @@
 $(document).ready(function() {
     update_status_rows();
+    $.get("/motd", function(data) {
+        $('#content').prepend(data).fadeIn(1000);
+    },
+        'html')
 });
 
 $(function() {
@@ -19,10 +23,6 @@ function update_status_rows() {
     LoadSpinner();
     $('#status-rows').fadeOut(100);
     $('#loading').fadeIn(100);
-    $.get("/motd", function(data) {
-        $('#flash-msg').html(data).fadeIn(1000);
-        },
-        'html')
     $.get("/stats", function(data,status) {
         $('#status-rows').html(data).fadeIn(1000);
         },

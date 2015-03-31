@@ -1,2 +1,4 @@
+    <section class="measure px2 py1 brdr--light-gray bg--off-white" id="flash-msg">
         <h3><span class="btn--gray btn--s "><%= @motd["date"] == nil ? Time.now.strftime("%y/%m") : @motd["date"] %></span> <%= @motd["title"] %></h3>
-        <p><%= @motd["body"] %></p>   
+        <p><%= @motd["body"] %></p>
+    </section>

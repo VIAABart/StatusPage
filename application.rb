@@ -5,7 +5,7 @@ module Status
     
     #set :public_folder, 'public'
     
-    use Rack::Session::Pool, :expire_after => 2592000 
+    use Rack::Session::Pool, :expire_after => 1000 
     
     configure :development do
       register Sinatra::Reloader
@@ -37,10 +37,16 @@ module Status
       requests.each do |r|
         begin
           response = open(r[:uri], :allow_redirections => :safe, :read_timeout => 5).status
-          @json << {:device => r[:device], :uri => r[:uri], :status => {:code => response[1], :body => response[0]}}
+          @json << {:device => r[:device], :uri => r[:uri], :status => {:code => response[1], :body => "Service is up (#{response[0]} #{response[1].capitalize})"}}
         rescue => e
-          session[:e] = e
-          @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "Fout", :body => e}}
+          #session[:e] = e
+          status = e.io.status[0]
+          puts status
+          if status == '403'
+            @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "OK", :body => "Service is up, authenticated only (#{e})"}}
+          else
+            @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "Fout", :body => "Service is down #{e}"}}
+          end
         end
       end
       erb :stats
@@ -51,8 +57,10 @@ module Status
     end
     
     get '/motd' do
-      @motd = YAML.load_file("motd.yml")
-      erb :motd
+      if File.exists? ("motd.yml")
+        @motd = YAML.load_file("motd.yml")
+        erb :motd
+      end
     end
     
     get '/error' do
