@@ -19,3 +19,21 @@
 #viaa:hover {
     background-color: #e74c3c;
 }
+
+body {padding-bottom:100px;}
+
+@media (max-width: 500px) {
+  #last {
+    display: none;
+  }
+  
+  h1 {
+	  padding-top: 20px;
+  }
+  
+  #viaa-logo {
+	  position: absolute !important;
+	  top: 0;
+	  right: 0;
+  }
+}

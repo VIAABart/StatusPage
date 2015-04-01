@@ -5,7 +5,8 @@ $.ajaxSetup ({
 
 $(document).ready(function() {
     $.get("/motd", function(data) {
-        $('#content').prepend(data).fadeIn(1000);
+        $('#content').prepend(data);
+		//$('#content').fadeIn(1000);
     },
         'html')
 });
