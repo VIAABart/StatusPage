@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    update_status_rows();
     $.get("/motd", function(data) {
         $('#content').prepend(data).fadeIn(1000);
     },
         'html')
+    update_status_rows();
+	
 });
 
 $(function() {
