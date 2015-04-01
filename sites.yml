@@ -2,13 +2,15 @@
 # Check status for these sites
 - device: VIAA Website (viaa.be)
   uri: http://viaa.be
-- device: AMS Registratie
+- device: AMS Registratie (registratie.viaa.be)
   uri: http://registratie.viaa.be
-- device: Het Archief
+- device: Het Archief (archief.viaa.be)
   uri: http://archief.viaa.be
-- device: Testbeeld
+- device: Testbeeld voor Onderwijs (testbeeld.viaa.be)
   uri: http://testbeeld.viaa.be
-- device: Publiekssite
+- device: Testbeeld voor bibliotheken (testbeeldbib.viaa.be)
+  uri: http://testbeeldbib.viaa.be
+- device: Publiekssite Het Archief (beta.hetarchief.be)
   uri: http://beta.hetarchief.be
-- device: VIAA Accounts manager
+- device: VIAA Accounts manager (accounts.viaa.be)
   uri: http://accounts.viaa.be
