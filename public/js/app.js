@@ -1,10 +1,17 @@
+$.ajaxSetup ({  
+    cache: false,
+    timeout: 15000 
+});
+
 $(document).ready(function() {
     $.get("/motd", function(data) {
         $('#content').prepend(data).fadeIn(1000);
     },
         'html')
-    update_status_rows();
+});
 	
+$(document).ready(function() {
+    update_status_rows();	
 });
 
 $(function() {
@@ -12,11 +19,6 @@ $(function() {
       update_status_rows();
       set_refresh_date();
   });
-});
-
-$.ajaxSetup ({  
-    cache: false,
-    timeout: 10000 
 });
 
 // fetch data from the server 
