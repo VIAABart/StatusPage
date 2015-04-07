@@ -1,5 +1,4 @@
 # encoding: UTF-8
-require 'timeout'
 
 module Status
   class Application < Sinatra::Base
@@ -34,7 +33,7 @@ module Status
       
     get '/stats' do
       @json = Array.new
-      requests = YAML.load_file("sites.yml").map(&:symbolize_keys)
+      requests = YAML.load_file("./sites.yml").map(&:symbolize_keys)
       requests.each do |r|
         begin
           Timeout.timeout(1) do
@@ -47,11 +46,15 @@ module Status
           next
         rescue => e
           #session[:e] = e
-          status = e.io.status[0]
-          if status == '403'
-            @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "OK", :body => "Service is up, authenticated only (#{e})"}}
+          if e.respond_to?('io')
+            status = e.io.status[0]
+            if status == '403'
+              @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "OK", :body => "Service is up, authenticated only (#{e})"}}
+            else
+              @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "Fout", :body => "Service is down #{e}"}}
+            end
           else
-            @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "Fout", :body => "Service is down #{e}"}}
+            @json << {:device => r[:device], :uri => r[:uri], :status => {:code => "Fout", :body => e}}
           end
           next
         end
