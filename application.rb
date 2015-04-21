@@ -25,7 +25,7 @@ module Status
     
     get '/onderhoud' do
       status 503
-      html :onderhoud
+      erb :onderhoud
     end
  
     def html(view)
