@@ -22,6 +22,11 @@ module Status
       # File.read(File.join('public', 'index.html'))
       html :index
     end
+    
+    get '/onderhoud' do
+      status 503
+      html :onderhoud
+    end
  
     def html(view)
       File.read(File.join('public', "#{view.to_s}.html"))
