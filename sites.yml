@@ -6,11 +6,9 @@
   uri: http://registratie.viaa.be
 - device: Het Archief (archief.viaa.be)
   uri: http://archief.viaa.be
-- device: Testbeeld voor Onderwijs (testbeeld.viaa.be)
-  uri: http://testbeeld.viaa.be
-- device: Testbeeld voor bibliotheken (testbeeldbib.viaa.be)
-  uri: http://testbeeldbib.viaa.be
-- device: Publiekssite Het Archief (beta.hetarchief.be)
-  uri: http://beta.hetarchief.be
+- device: Het Archief voor Onderwijs (onderwijs.hetarchief.be)
+  uri: http://onderwijs.hetarchief.be
+- device: Nieuws van de Groote Oorlog (hetarchief.be)
+  uri: http://hetarchief.be
 - device: VIAA Accounts manager (accounts.viaa.be)
   uri: http://accounts.viaa.be
